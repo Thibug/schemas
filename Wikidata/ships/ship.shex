@@ -23,10 +23,11 @@ start = @<#ship>
 	p:P31  @<#P31_instance_of> ;
 
 	# Mandatory ship class properties
-	p:P17  @<#P17_country> ;	
-	p:P2317 @<#P2317_call_sign> ; # A ship has one call sing
+	p:P17  @<#P17_country> ; # AdV opmerking: Country is not equal to Flag State (Q4147029)!	
+	p:P2317 @<#P2317_call_sign> ; # A ship has one call sign
 	p:P137 @<#P137_operator>+ ; # A ship has one or more operators during the course of its existance
 	p:P138 @<#P138_named_after>? ; 
+	p:P580 @<#P580_start_time> ; # AdV opmerking: Schip bestaat na kiellegging (Q14592615), maar misschien niet mandatory
 	p:P729 @<#P729_service_entry> ; 
 	
 	# Recommended ship class properties
@@ -54,7 +55,7 @@ start = @<#ship>
 }
 
 <#country>{
-	wdt:P31  [wd:Q6256] ;
+	wdt:P31  [wd:Q6256] ; # AdV: Q4147029 ???
 }
 
 <#P137_operator> {
@@ -71,7 +72,12 @@ start = @<#ship>
 	ps:P176   [wd:~] ;
 	prov:wasDerivedFrom @<#reference> ;
 }
- 
+
+<#P580_start_time> {
+        ps:P580  xsd:dateTime ;
+	prov:wasDerivedFrom @<#reference> ; # AdV: misschien controle wat een geldige datum is?
+}
+
 <#P729_service_entry> {
 	ps:P729  xsd:dateTime ;
 	prov:wasDerivedFrom @<#reference> ;
